@@ -80,7 +80,7 @@ TEST(tappityTesting, long_string_fail)
 {
     tappity check("Jonathan Coe's The Rotter's Club, 13,955 word sentence");
     check.entry("Jonathan Coe's The Rotter's Club 13,955 word sentence");
-    ASSERT_FALSE(check.length_difference() == 0);
+    ASSERT_EQ(check.length_difference(), 0);
 }
 
 // Check same text with different length in reference string
@@ -96,7 +96,7 @@ TEST(tappityTesting, same_text_diff_len_in_ref_fail)
 {
     tappity check("yellow");
     check.entry("hello");
-    ASSERT_FALSE(check.length_difference() == 2);
+    ASSERT_EQ(check.length_difference(), 2);
 }
 
 // Check the 100% accuracy by making both strings same length.
@@ -120,7 +120,7 @@ TEST(tappityTesting, check_accuracy_w_both_empty_string_fail)
 {
     tappity check("");
     check.entry("");
-    ASSERT_FALSE(check.accuracy() == 0.00);
+    ASSERT_EQ(check.accuracy(), 0.00);
 }
 
 // Check accuracy with both empty strings that fails but ref string one extra space.
@@ -128,7 +128,7 @@ TEST(tappityTesting, check_accuracy_w_both_empty_ex_space_string_fail)
 {
     tappity check(" ");
     check.entry("");
-    ASSERT_FALSE(check.accuracy() == 100.00);
+    ASSERT_EQ(check.accuracy(), 100.00);
 }
 
 // Check accuracy with spacial characters only
@@ -152,7 +152,7 @@ TEST(tappityTest, accuracy_w_numbers_fails)
 {
     tappity check("987654321");
     check.entry("123456789");
-    ASSERT_FALSE(check.accuracy() == 0.00);
+    ASSERT_EQ(check.accuracy(), 0.00);
 }
 
 // Check accuracy when ref string is diff than input string
