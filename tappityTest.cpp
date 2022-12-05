@@ -123,6 +123,14 @@ TEST(tappityTesting, check_accuracy_w_both_empty_string_fail)
     ASSERT_EQ(check.accuracy(), 0.00);
 }
 
+// Check accuracy with both empty strings that fails but ref string one extra space.
+TEST(tappityTesting, check_accuracy_w_both_empty_ex_space_string_fail)
+{
+    tappity check(" ");
+    check.entry("");
+    ASSERT_EQ(check.accuracy(), 100.00);
+}
+
 // Check accuracy with spacial characters only
 TEST(tappityTest, accuracy_w_special_char)
 {
